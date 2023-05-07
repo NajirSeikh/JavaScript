@@ -1,7 +1,7 @@
 'use strict';
 
 //////////////////////////////////////// Scoping in Practice
-/*
+
 function calcAge(birthYear) {
   const age = 2023 - birthYear;
   function printAge() {
@@ -118,7 +118,7 @@ f();
 
 // var firstName = 'Romi';
 
-const najir = {
+const najir2 = {
   firstName: 'Najir',
   year: 1991,
   calcAge: function () {
@@ -146,17 +146,17 @@ const najir = {
     console.log(`Hey ${this.firstName}`);
   },
 };
-najir.greet();
-najir.calcAge();
+najir2.greet();
+najir2.calcAge();
 
 // arguments keyword
-const addExpr = function (a, b) {
+const add2Expr = function (a, b) {
   console.log(arguments);
   return a + b;
 };
 
-addExpr(2, 5);
-addExpr(2, 5, 8, 12);
+add2Expr(2, 5);
+add2Expr(2, 5, 8, 12);
 
 var addArrow = (a, b) => {
   console.log(arguments);
@@ -181,7 +181,6 @@ friend.age = 27;
 
 console.log('Friend: ', friend);
 console.log('Me: ', me);
-*/
 
 //////////////////////////////////////// Primitives vs Objects in Practice
 
