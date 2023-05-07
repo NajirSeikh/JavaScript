@@ -36,7 +36,6 @@ const firstName = 'Najir';
 calcAge(1997);
 // console.log(age);
 // printAge();
-*/
 
 //////////////////////////////////////// Hoisting in Practice
 
@@ -81,3 +80,37 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+*/
+
+//////////////////////////////////////// Hoisting in Practice
+console.log(this);
+
+const calcAge = function (birthYear) {
+  // console.log(2023 - birthYear);
+  // console.log(this);
+};
+calcAge(1997);
+
+const calcAgeArrow = birthYear => {
+  // console.log(2023 - birthYear);
+  // console.log(this);
+};
+calcAgeArrow(2000);
+
+const najir = {
+  year: 1997,
+  calcAge: function () {
+    console.log(this);
+    console.log(2023 - this.year);
+  },
+};
+// najir.calcAge();
+
+const romi = {
+  year: 2017,
+};
+romi.calcAge = najir.calcAge;
+romi.calcAge();
+
+const f = najir.calcAge;
+f();
