@@ -82,7 +82,6 @@ rest2.owner &&= 'ANONYMOUS';
 console.log(rest1);
 console.log(rest2);
 
-/*
 /////////////////////////////////////////////
 // The Nullish  Coalescing Operator (??)  Dated-18.05.2023
 
@@ -94,7 +93,6 @@ console.log(guests);
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect);
 
-/*
 /////////////////////////////////////////////
 // Short Circutting(&& and __)  Dated-18.05.2023
 
@@ -126,7 +124,6 @@ if (restaurant.orderPizza) {
 
 restaurant.orderPizza && restaurant.orderPizza('Mashrooms', 'Spinach');
 
-/*
 /////////////////////////////////////////////
 // Rest Pattern and Parameters Dated-18.05.2023
 
@@ -213,8 +210,8 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+/
 
-/*
 /////////////////////////////////////////////
 // Destructuring Objects Dated-17.05.2023
 
