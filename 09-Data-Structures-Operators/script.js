@@ -50,6 +50,20 @@ const restaurant = {
   },
 };
 
+/* **************Looping Arrays_ The for-of Loop - Dated-19.05.2023************** */
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(menu);
+
+for (const item of menu) console.log(item);
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+/* **************Coding Challenge #1 - Dated-19.05.2023************** */
+/*
+
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -91,8 +105,6 @@ const game = {
   },
 };
 
-/* **************Coding Challenge #1 - Dated-18.05.2023************** */
-
 /* 
 We're building a football betting app (soccer for my American friends 😅)!
 
@@ -110,7 +122,7 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 
 GOOD LUCK 😀
 */
-
+/*
 // Task 1
 // const players1 = game.players[0];
 // const players2 = game.players[1];
