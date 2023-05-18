@@ -50,6 +50,38 @@ const restaurant = {
 };
 
 /////////////////////////////////////////////
+// Short Circutting(&& and __)  Dated-18.05.2023
+
+// Use ANY data type, return ANY data type, short circutting
+console.log('---- OR ----');
+console.log(3 || 'Najir');
+console.log(' ' || 'Najir');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('---- AND ----');
+console.log(0 && 'Najir');
+console.log(7 && 'Najir');
+
+console.log('Hello' && 23 && null && 'Najir');
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('Mashrooms', 'Spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('Mashrooms', 'Spinach');
+
+/*
+/////////////////////////////////////////////
 // Rest Pattern and Parameters Dated-18.05.2023
 
 // SPREAD, because on RIGHT side of =
