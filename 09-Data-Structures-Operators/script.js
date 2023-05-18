@@ -1,3 +1,4 @@
+/* **************Code by Najir Seikh - 15/05/2023************** */
 'use strict';
 
 const restaurant = {
@@ -49,8 +50,7 @@ const restaurant = {
   },
 };
 
-/////////////////////////////////////////////
-// Logical Assgnment Operators  Dated-18.05.2023
+/* **************Logical Assgnment Operators - Dated-18.05.2023************** */
 
 const rest1 = {
   name: 'Capri',
@@ -82,8 +82,7 @@ rest2.owner &&= 'ANONYMOUS';
 console.log(rest1);
 console.log(rest2);
 
-/////////////////////////////////////////////
-// The Nullish  Coalescing Operator (??)  Dated-18.05.2023
+/* **************The Nullish  Coalescing Operator (??) - Dated-18.05.2023************** */
 
 restaurant.numGuests = 0;
 const guests = restaurant.numGuests || 10;
@@ -93,9 +92,7 @@ console.log(guests);
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect);
 
-/////////////////////////////////////////////
-// Short Circutting(&& and __)  Dated-18.05.2023
-
+/* **************Short Circutting(|| and &&) - Dated-18.05.2023************** */
 // Use ANY data type, return ANY data type, short circutting
 console.log('---- OR ----');
 console.log(3 || 'Najir');
@@ -124,9 +121,7 @@ if (restaurant.orderPizza) {
 
 restaurant.orderPizza && restaurant.orderPizza('Mashrooms', 'Spinach');
 
-/////////////////////////////////////////////
-// Rest Pattern and Parameters Dated-18.05.2023
-
+/* **************Rest Pattern and Parameters - Dated-18.05.2023************** */
 // SPREAD, because on RIGHT side of =
 const arr = [1, 2, ...[3, 4]];
 
@@ -163,9 +158,8 @@ add(...x);
 restaurant.orderPizza('Mashrooms', 'Onion', 'Olives', 'Spinach');
 restaurant.orderPizza('Mashrooms');
 
+/* **************The Spread Operator(...) - Dated-17.05.2023************** */
 /*
-/////////////////////////////////////////////
-// The Spread Operator(...) Dated-17.05.2023
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 console.log(badNewArr);
@@ -210,11 +204,9 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
-/
 
-/////////////////////////////////////////////
-// Destructuring Objects Dated-17.05.2023
-
+/* **************Destructuring Objects - Dated-17.05.2023************** */
+/*
 const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
 
@@ -254,11 +246,9 @@ restaurant.orderDelivery({
   address: 'Via del Sole, 21',
   starterIndex: 1,
 });
-*/
 
+/* **************Destructuring Arrays - Dated-15.05.2023************** */
 /*
-/////////////////////////////////////////////
-// Destructuring Arrays
 const arr = [2, 3, 4];
 const a = arr[0];
 const b = arr[1];
