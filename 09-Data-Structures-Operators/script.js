@@ -49,8 +49,46 @@ const restaurant = {
   },
 };
 
-/* **************Coding Challenge #2 - Dated-20.05.2023************** */
+/* **************Sets - Dated-20.05.2023************** */
 
+const orderSet = new Set([
+  'Pizza',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(orderSet);
+
+console.log(new Set('Najir'));
+
+console.log(orderSet.size);
+console.log(orderSet.has('Pizza'));
+console.log(orderSet.has('Bread'));
+orderSet.add('Garlic Bread');
+orderSet.add('Garlic Bread');
+orderSet.delete('Risotto');
+// orderSet.clear();
+console.log(orderSet);
+
+for (const order of orderSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+// const staffUnique = new Set(staff);
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('NajirSeikh').size);
+console.log(new Set('room').size);
+
+/* **************Coding Challenge #2 - Dated-20.05.2023************** */
+/*
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -117,7 +155,7 @@ game, it will look like this:
 }
 GOOD LUCK 😀
  */
-
+/*
 // Task 1
 for (const [i, player] of game.scored.entries()) {
   console.log(`Goal ${i + 1}: ${player}`);
