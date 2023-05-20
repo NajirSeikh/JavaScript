@@ -49,6 +49,8 @@ const restaurant = {
   },
 };
 
+/* **************Optional Chaining (?.) - Dated-20.05.2023************** */
+
 if (restaurant.openingHours && restaurant.openingHours.mon)
   console.log(restaurant.openingHours.mon.open);
 
@@ -56,7 +58,6 @@ if (restaurant.openingHours && restaurant.openingHours.mon)
 
 // WITH optional chaining
 console.log(restaurant.openingHours.mon?.open);
-console.log(restaurant.openingHours?.mon?.open);
 
 // Example
 const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
