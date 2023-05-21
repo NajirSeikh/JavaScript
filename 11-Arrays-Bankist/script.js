@@ -74,7 +74,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 /* **************Simple Array Methods - 21/05/2023************** */
-
+/*
 let arr = ['a', 'b', 'c', 'd', 'e'];
 
 // SLICE
@@ -106,3 +106,18 @@ console.log([...arr, ...arr2]);
 
 // JOIN
 console.log(letters.join(' - '));
+*/
+/* **************The new at Method - 21/05/2023************** */
+
+const arr = [23, 11, 64];
+console.log(arr[0]); //23
+console.log(arr.at(0)); //23
+
+// Getting last array element
+console.log(arr[arr.length - 1]); //64
+console.log(arr.slice(-1)[0]); //64
+console.log(arr.at(-1)); //64
+
+// Also works for string
+console.log('NAJIR'.at(0)); //N
+console.log('NAJIR'.at(-1)); //R
