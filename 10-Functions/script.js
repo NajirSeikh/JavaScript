@@ -65,7 +65,7 @@ newPassport(najir);
 checkIn(flight, najir);
 */
 /* **************Functions Accepting Callback Functions - Dated-21.05.2023************** */
-
+/*
 const oneWord = function (str) {
   return str.replace(/ /g, '').toLowerCase();
 };
@@ -92,3 +92,26 @@ const high5 = function () {
 };
 document.body.addEventListener('click', high5);
 ['Najir', 'Romi', 'Mahatab'].forEach(high5);
+*/
+/* **************Functions Returning Functions - Dated-21.05.2023************** */
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greetHey = greet('Hey');
+greetHey('Najir');
+greetHey('Romi');
+
+greet('Hello')('Mahatab');
+
+// Challenge - Using Arrow()
+// const greet = greeting => {
+//   return name => {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+greetArr('Hi')('Arif');
