@@ -1,6 +1,5 @@
 /* **************Code by Najir Seikh - 13/07/2021************** */
-"use strict";
-
+'use strict';
 /*
 let hasDriversLicense = false;
 const passText = true;

@@ -1,6 +1,6 @@
 /* **************Code by Najir Seikh - 30/06/2021************** */
-
-/* let js = "amazing";
+/* 
+let js = "amazing";
 // if (js === "amazing") alert("JavaScript is FUN");
 
 // console.log(40 + 8 + 23 - 10);

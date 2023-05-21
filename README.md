@@ -1,2 +1,3 @@
 # JavaScript
- All about JS basic to advanced
+
+All about JavaScript: From Zero to Expert!
