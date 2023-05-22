@@ -229,7 +229,7 @@ console.log(movements.map(mov => mov * eurToUsd));
 
 // using for-Of loop
 const movementsUSDfor = [];
-for (const mov of movements) movements.push(mov * eurToUsd);
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
 console.log(movementsUSDfor);
 
 // const movementsDescription = movements.map((mov, i, arr) => {
@@ -241,6 +241,8 @@ console.log(movementsUSDfor);
 // });
 const movementsDescription = movements.map(
   (mov, i) =>
-    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdraw'} ${mov}`
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdraw'} ${Math.abs(
+      mov
+    )}`
 );
 console.log(movementsDescription);
