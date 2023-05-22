@@ -13,7 +13,7 @@ const account1 = {
 };
 
 const account2 = {
-  owner: 'Romi Sarkar',
+  owner: 'Romi Sarkar Ali',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
@@ -79,6 +79,33 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+/* **************Bankist: Computing Usernames - 22/05/2023************** */
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+
+console.log(accounts);
+
+// // To create username for a user
+// const createUsernames = function (user) {
+//   const username = user
+//     .toLowerCase()
+//     .split(' ')
+//     .map(name => name[0])
+//     .join('');
+//   return username;
+// };
+
+// console.log(createUsernames('Romi Sarkar Ali'));
 
 /////////////////////////////////////////////////
 // LECTURES
@@ -216,7 +243,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
 checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 */
 /* **************The map Method - 22/05/2023************** */
-
+/*
 const eurToUsd = 1.1;
 
 const movementsUSD = movements.map(function (mov) {
@@ -246,3 +273,4 @@ const movementsDescription = movements.map(
     )}`
 );
 console.log(movementsDescription);
+*/
