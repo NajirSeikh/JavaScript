@@ -274,3 +274,16 @@ const movementsDescription = movements.map(
 );
 console.log(movementsDescription);
 */
+/* **************The filter Method - 22/05/2023************** */
+
+// const deposits = movements.filter(function (mov) {
+const deposits = movements.filter(function (mov, i, arr) {
+  return mov > 0;
+});
+// const deposits = movements.filter(mov => mov > 0);
+console.log(movements);
+console.log(deposits);
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(movements);
+console.log(withdrawals);
