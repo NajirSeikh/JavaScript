@@ -80,6 +80,13 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => (acc += mov), 0);
+
+  labelBalance.textContent = `${balance}€`;
+};
+calcDisplayBalance(account1.movements);
+
 /* **************Bankist: Computing Usernames - 22/05/2023************** */
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -90,10 +97,9 @@ const createUsernames = function (accs) {
       .join('');
   });
 };
-
 createUsernames(accounts);
 
-console.log(accounts);
+// console.log(accounts);
 
 // // To create username for a user
 // const createUsernames = function (user) {
@@ -275,7 +281,7 @@ const movementsDescription = movements.map(
 console.log(movementsDescription);
 */
 /* **************The filter Method - 22/05/2023************** */
-
+/*
 // const deposits = movements.filter(function (mov) {
 const deposits = movements.filter(function (mov, i, arr) {
   return mov > 0;
@@ -287,3 +293,36 @@ console.log(deposits);
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(movements);
 console.log(withdrawals);
+*/
+/* **************The reduce Method - 23/05/2023************** */
+
+console.log(movements);
+
+// accumulator -> SNOWBALL
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + cur;
+// }, 0);
+// Reduce() Using Arrow(), same as above code
+const balance = movements.reduce((acc, mov) => acc + mov, 0);
+console.log(balance);
+
+// using for-of loop
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+// Calculate Maximum value
+// const max = movements.reduce((acc, mov) => {
+//   if (acc > mov) return acc;
+//   else {
+//     return mov;
+//   }
+// }, movements[0]);
+// Using Ternary Operator
+const max = movements.reduce(
+  (acc, mov) => (acc > mov ? acc : mov),
+  movements[0]
+);
+
+console.log(max);
