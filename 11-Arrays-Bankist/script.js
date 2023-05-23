@@ -397,8 +397,15 @@ console.log(avg2);
 /* **************The Magic of Chaining Methods  - 23/05/2023************** */
 
 const eurToUsd = 1.1;
+console.log(movements);
+
+// PIPELINE
 const totalDepositsUSD = movements
   .filter(mov => mov > 0)
-  .map(mov => mov * eurToUsd)
+  .map((mov, i, arr) => {
+    // console.log(arr);
+    return mov * eurToUsd;
+  })
+  // .map(mov => mov * eurToUsd)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
