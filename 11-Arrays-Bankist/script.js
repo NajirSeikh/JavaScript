@@ -428,7 +428,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
-
+/*
 const calcAverageHumanAge = ages =>
   ages
     .map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
@@ -439,3 +439,24 @@ const calcAverageHumanAge = ages =>
 const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg1, avg2);
+
+*/
+/* **************The find Method  - 24/05/2023************** */
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Najir Seikh');
+console.log(account);
+
+// Using for-of loop
+const accountFor = function (accounts) {
+  for (const acc of accounts) {
+    if (acc.owner === 'Najir Seikh') return acc;
+  }
+};
+
+console.log(accountFor(accounts));
