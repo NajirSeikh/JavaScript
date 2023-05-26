@@ -79,10 +79,10 @@ const displayMovements = function (movements) {
   });
 };
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => (acc += mov), 0);
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => (acc += mov), 0);
 
-  labelBalance.textContent = `${balance}€`;
+  labelBalance.textContent = `${acc.balance}€`;
 };
 
 /* **************Bankist: Calculate & Display Summary Balance - 23/05/2023************** */
@@ -120,12 +120,29 @@ const createUsernames = function (accs) {
   });
 };
 createUsernames(accounts);
+// console.log(accounts);
+// // To create username for a user
+// const createUsernames = function (user) {
+//   const username = user
+//     .toLowerCase()
+//     .split(' ')
+//     .map(name => name[0])
+//     .join('');
+//   return username;
+// };
+// console.log(createUsernames('Romi Sarkar Ali'));
 
 /* **************Bankist: Implementing Login - 25/05/2023************** */
-
+const updateUI = acc => {
+  // Display movements
+  displayMovements(acc.movements);
+  // Display balance
+  calcDisplayBalance(acc);
+  // Display summary
+  calcDisplaySummary(acc);
+};
 // Event handler
 let currentAccount;
-
 btnLogin.addEventListener('click', e => {
   // Prevent form from submitting
   e.preventDefault();
@@ -146,29 +163,39 @@ btnLogin.addEventListener('click', e => {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
-    // Display movements
-    displayMovements(currentAccount.movements);
-    // Display balance
-    calcDisplayBalance(currentAccount.movements);
-    // Display summary
-    calcDisplaySummary(currentAccount);
-    console.log('LOGIN');
+
+    // update UI
+    updateUI(currentAccount);
   }
 });
 
-// console.log(accounts);
+/* **************Bankist: Implementing Transfers - 25/05/2023************** */
 
-// // To create username for a user
-// const createUsernames = function (user) {
-//   const username = user
-//     .toLowerCase()
-//     .split(' ')
-//     .map(name => name[0])
-//     .join('');
-//   return username;
-// };
+btnTransfer.addEventListener('click', e => {
+  // Prevent form from submitting
+  e.preventDefault();
 
-// console.log(createUsernames('Romi Sarkar Ali'));
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    // console.log('Transfer valid');
+    // Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    // update UI
+    updateUI(currentAccount);
+  }
+});
 
 /////////////////////////////////////////////////
 // LECTURES
