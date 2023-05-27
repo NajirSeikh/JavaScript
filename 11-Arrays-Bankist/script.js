@@ -197,6 +197,24 @@ btnTransfer.addEventListener('click', e => {
   }
 });
 
+/* **************Bankist: Loan Request - 27/05/2023************** */
+
+btnLoan.addEventListener('click', e => {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+  // console.log(amount);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 /* **************Bankist: The findIndex method & Close Account - 26/05/2023************** */
 
 btnClose.addEventListener('click', e => {
@@ -545,3 +563,25 @@ const accountFor = function (accounts) {
 
 console.log(accountFor(accounts));
 */
+/* **************The some and every Method  - 27/05/2023************** */
+
+console.log(movements);
+
+// EQUALITY
+console.log(movements.includes(-130));
+// using some()
+console.log(movements.some(mov => mov === -130));
+
+// CONDITION
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits);
+
+// EVERY
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
