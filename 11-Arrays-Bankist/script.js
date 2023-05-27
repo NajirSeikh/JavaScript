@@ -62,10 +62,12 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 /* **************Bankist: Creating DOM Elements - 21/05/2023************** */
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
 
-  movements.forEach((mov, i) => {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach((mov, i) => {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
     <div class="movements__row">
@@ -238,6 +240,16 @@ btnClose.addEventListener('click', e => {
   }
 
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+/* **************Bankist: Sorted Movements - 27/05/2023************** */
+let sorted = false;
+btnSort.addEventListener('click', e => {
+  e.preventDefault();
+
+  displayMovements(currentAccount.movements, !sorted);
+
+  sorted = !sorted;
 });
 
 /////////////////////////////////////////////////
@@ -588,7 +600,7 @@ console.log(movements.filter(deposit));
 
 */
 /* **************The flat and flatMap Methods  - 27/05/2023************** */
-
+/*
 const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
 console.log(arr.flat());
 
@@ -615,3 +627,35 @@ const overallBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance2);
+
+*/
+/* **************Sorting Arrays  - 27/05/2023************** */
+
+// Strings
+const owners = ['Najir', 'Romi', 'Jack', 'Imran', 'Arya'];
+console.log(owners);
+console.log(owners.sort());
+
+// Numbers
+console.log(movements);
+
+// return < 0: A, B (keep order)
+// return > 0: B, A (switch order)
+
+// Ascending
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+movements.sort((a, b) => a - b);
+
+console.log(movements);
+
+// Descending
+// movements.sort((a, b) => {
+//   if (a > b) return -1;
+//   if (a < b) return 1;
+// });
+movements.sort((a, b) => b - a);
+
+console.log(movements);
