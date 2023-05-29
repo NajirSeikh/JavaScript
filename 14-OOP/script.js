@@ -2,7 +2,6 @@
 'use strict';
 
 /* **************Constructor Functions and the new Operator - 29/05/2023************** */
-
 const Person = function (firstName, birthYear) {
   // Instance properties
   // this.fName = firstName;
@@ -57,3 +56,27 @@ console.log(najir.species, romi.species);
 
 console.log(najir.hasOwnProperty('firstName'));
 console.log(najir.hasOwnProperty('species'));
+
+/* **************Prototypal Inheritance on Built-In Objects - 29/05/2023************** */
+console.log(najir.__proto__);
+console.log(najir.__proto__.__proto__);
+console.log(najir.__proto__.__proto__.__proto__);
+
+// console.log(Person.prototype.constructor);
+console.dir(Person.prototype.constructor);
+
+const arr = [3, 2, 9, 4, 2, 9, 3];
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+  // return this; // return the array
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+const h1 = document.querySelector('h1');
+console.dir(x => x + 1);
