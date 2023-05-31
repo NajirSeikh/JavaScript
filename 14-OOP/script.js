@@ -131,7 +131,7 @@ mercedes.accelerate();
 mercedes.brake();
 */
 /* **************ES6 Classes - 30/05/2023************** */
-
+/*
 // Class expression
 // const PersonCl = class{}
 
@@ -167,3 +167,23 @@ imran.greet();
 // 1. Classes is NOT hoisted
 // 2. Class are first-class citizen
 // 3. Classes are executed in strict mode
+*/
+/* **************Setters and Getters - 30/05/2023************** */
+
+const account = {
+  owner: 'najir',
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+console.log(account.latest);
+
+account.latest = 50;
+console.log(account.movements);
