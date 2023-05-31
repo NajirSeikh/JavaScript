@@ -168,7 +168,7 @@ imran.greet();
 // 2. Class are first-class citizen
 // 3. Classes are executed in strict mode
 */
-/* **************Setters and Getters - 30/05/2023************** */
+/* **************Setters and Getters - 31/05/2023************** */
 
 const account = {
   owner: 'najir',
