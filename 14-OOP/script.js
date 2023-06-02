@@ -2,7 +2,7 @@
 'use strict';
 
 /* **************Constructor Functions and the new Operator - 29/05/2023************** */
-
+/*
 const Person = function (firstName, birthYear) {
   // Instance properties
   // this.fName = firstName;
@@ -137,7 +137,7 @@ mercedes.accelerate();
 mercedes.brake();
 */
 /* **************ES6 Classes - 30/05/2023************** */
-
+/*
 // Class expression
 // const PersonCl = class{}
 
@@ -173,6 +173,7 @@ class PersonCl {
   }
 
   /* **************Static Methods - 2/06/2023************** */
+/*
   // Static method
   static hey() {
     console.log('Hey there 🧤');
@@ -202,7 +203,7 @@ const suman = new PersonCl('Suman Reddy', 1996);
 PersonCl.hey();
 
 /* **************Setters and Getters - 1/06/2023************** */
-
+/*
 const account = {
   owner: 'najir',
   movements: [200, 530, 120, 300],
@@ -220,3 +221,30 @@ console.log(account.latest);
 
 account.latest = 50;
 console.log(account.movements);
+*/
+/* **************Object.create - 2/06/2023************** */
+
+const PersonProto = {
+  calcAge() {
+    console.log(2023 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const maha = Object.create(PersonProto);
+console.log(maha);
+maha.name = 'Mahatab';
+maha.birthYear = 1997;
+maha.calcAge();
+
+console.log(maha.__proto__);
+console.log(maha.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1990);
+console.log(sarah);
+sarah.calcAge();
