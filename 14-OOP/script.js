@@ -2,7 +2,7 @@
 'use strict';
 
 /* **************Constructor Functions and the new Operator - 29/05/2023************** */
-/*
+
 const Person = function (firstName, birthYear) {
   // Instance properties
   // this.fName = firstName;
@@ -32,7 +32,13 @@ console.log(romi, maha);
 console.log(najir instanceof Person);
 const jay = {};
 console.log(jay instanceof Person);
-*/
+
+Person.hey = function () {
+  console.log('Hey there 🧤');
+  console.log(this);
+};
+Person.hey();
+
 /* **************Prototypes - 29/05/2023************** */
 /*
 console.log(Person.prototype);
@@ -142,6 +148,7 @@ class PersonCl {
     this.birthYear = birthYear;
   }
 
+  // Instance method
   // Methods will be added to .prototype property
   calcAge() {
     console.log(2023 - this.birthYear);
@@ -164,6 +171,13 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  /* **************Static Methods - 2/06/2023************** */
+  // Static method
+  static hey() {
+    console.log('Hey there 🧤');
+    console.log(this);
+  }
 }
 
 const imran = new PersonCl('Imran Hossain', 1997);
@@ -184,6 +198,8 @@ imran.greet();
 // 3. Classes are executed in strict mode
 
 const suman = new PersonCl('Suman Reddy', 1996);
+
+PersonCl.hey();
 
 /* **************Setters and Getters - 1/06/2023************** */
 
