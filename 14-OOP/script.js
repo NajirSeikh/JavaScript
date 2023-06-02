@@ -362,6 +362,7 @@ DATA CAR 1: 'Tesla' going at 120 km/h, with a charge of 23%
 
 GOOD LUCK 😀
 */
+/*
 // 1.
 const Car = function (make, speed) {
   this.make = make; // car name
@@ -406,3 +407,69 @@ tesla.chargeBattery(90);
 console.log(tesla);
 tesla.brake();
 tesla.accelerate();
+
+/* **************Inheritance Between 'Classes' - 2/06/2023************** */
+
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  // Instance method
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(`${this.fullName} is ${2023 - this.birthYear} years old`);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
+
+  get age() {
+    return 2023 - this.birthYear;
+  }
+
+  // Set a property that already exists
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  // Static method
+  static hey() {
+    console.log('Hey there 🧤');
+  }
+}
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Always needs to happen first!
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} and I am study ${this.course}`);
+  }
+
+  calcAge() {
+    console.log(
+      `I'm ${2023 - this.birthYear} years old, but as a student I feel like ${
+        2023 - this.birthYear + 10
+      }`
+    );
+  }
+}
+
+const man = new PersonCl('Man Singh', 2002);
+man.calcAge();
+
+const manna = new StudentCl('Manna Dey', 2000, 'CSE');
+console.log(manna);
+manna.introduce();
+manna.calcAge();
