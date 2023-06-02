@@ -409,7 +409,7 @@ tesla.brake();
 tesla.accelerate();
 
 /* **************Inheritance Between 'Classes' - 2/06/2023************** */
-
+/*
 class PersonCl {
   constructor(fullName, birthYear) {
     this.fullName = fullName;
@@ -473,3 +473,33 @@ const manna = new StudentCl('Manna Dey', 2000, 'CSE');
 console.log(manna);
 manna.introduce();
 manna.calcAge();
+*/
+/* **************Inheritance Between 'Classes': Object.create - 2/06/2023************** */
+
+const PersonProto = {
+  calcAge() {
+    console.log(`${this.firstName} is ${2023 - this.birthYear} years old`);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const maha = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.firstName} and I am study ${this.course}`);
+};
+
+const jay = Object.create(StudentProto);
+jay.init('Jay Kumar', 2010, 'CSE');
+jay.introduce();
+jay.calcAge();
