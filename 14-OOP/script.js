@@ -260,6 +260,7 @@ DATA CAR 1: 'Ford' going at 120 km/h
 
 GOOD LUCK 😀
 */
+/*
 // 1.
 class CarCl {
   constructor(make, speed) {
@@ -305,3 +306,46 @@ console.log(`${ford.speed} km/h = ${ford.speedUS} mi/h`);
 
 ford.accelerate();
 ford.break();
+
+*/
+/* **************Inheritance Between 'Classes': Constructor Functions - 2/06/2023************** */
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function () {
+  console.log(2023 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+// Linking prototype
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I am study ${this.course}`);
+};
+
+const nina = new Student('Nina Dave', 2000, 'CSE');
+console.log(nina);
+nina.introduce();
+nina.calcAge();
+
+console.log(nina.__proto__);
+console.log(nina.__proto__.__proto__);
+
+console.log(nina instanceof Student);
+console.log(nina instanceof Person);
+console.log(nina instanceof Object);
+
+console.log(Student.prototype.constructor);
+console.dir(Student.prototype.constructor);
+
+Student.prototype.constructor = Student;
+console.log(Student.prototype.constructor);
+console.dir(Student.prototype.constructor);
