@@ -769,6 +769,7 @@ acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
 console.log(acc1.getMovements());
 */
 /* **************ES6 Classes Summary - 3/06/2023************** */
+/*
 // Parent class
 class Person {
   constructor(fullName, birthYear) {
@@ -840,3 +841,86 @@ student.study(8);
 student.testScore = 8;
 console.log(student.testScore);
 Student.printCurriculum();
+*/
+/* **************Coding Challenge #4 - 3/06/2023************** */
+/* 
+1. Re-create challenge #3, but this time using ES6 classes: create an 'EVCl' child class of the 'CarCl' class
+2. Make the 'charge' property private;
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery' methods of this class, and also update the 'brake' method in the 'CarCl' class. They experiment with chining!
+
+DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
+
+GOOD LUCK 😀
+*/
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  // 2.
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  // 3.
+  set speedUS(spd) {
+    this.speed = spd * 1.6;
+  }
+
+  // 4.
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+
+  break() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+}
+
+class EVCl extends CarCl {
+  #charge;
+
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h, with charge of ${
+        this.#charge
+      }%`
+    );
+    return this;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+}
+
+const rivian = new EVCl('Rivian', 120, 23);
+console.log(rivian);
+console.log(`${rivian.speed} km/h = ${rivian.speedUS} mi/h`);
+
+rivian
+  .accelerate()
+  .accelerate()
+  .accelerate()
+  .break()
+  .chargeBattery(90)
+  .accelerate()
+  .accelerate()
+  .break()
+  .accelerate();
+// console.log(rivian.#charge);
+
+// console.log(rivian.speedUS);
+console.log(`${rivian.speed} km/h = ${rivian.speedUS} mi/h`);
