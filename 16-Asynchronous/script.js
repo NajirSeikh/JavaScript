@@ -1,6 +1,6 @@
 /* **************Code by Najir Seikh - 3/06/2023************** */
 'use strict';
-/* **************Our First AJAX Call: XMLHttpRequest - 29/05/2023************** */
+/* **************Our First AJAX Call: XMLHttpRequest - 03/06/2023************** */
 /*
 const getCountryData = function (country) {
   const request = new XMLHttpRequest();
