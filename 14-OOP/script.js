@@ -685,7 +685,7 @@ Account.helper();
 
 */
 /* **************Chaining Methods - 3/06/2023************** */
-
+/*
 // 1) Public fields
 // 2) Private fields
 // 3) Public methods
@@ -767,3 +767,76 @@ Account.helper();
 acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
 
 console.log(acc1.getMovements());
+*/
+/* **************ES6 Classes Summary - 3/06/2023************** */
+// Parent class
+class Person {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+}
+
+// Inheritance between classes, automatically sets prototype
+// Child class
+class Student extends Person {
+  // Public field (similar to property, available on created object)
+  university = 'Aliah University';
+  // Private fields (not accessible outside of class)
+  #studyHours = 0;
+  #course;
+  // Static public field (available only on class
+  static numSubjects = 10;
+
+  // Constructor method, called by new operator. Mandatory in regular class, might be omitted in a child class
+  constructor(fullName, birthYear, startYear, course) {
+    // Call to parent (super) class (necessary with extend). Needs to happen before accessing this
+    super(fullName, birthYear);
+
+    // Instance property (available on created object)
+    this.startYear = startYear;
+
+    // Redefining private field
+    this.#course = course;
+  }
+
+  // Public method
+  introduce() {
+    console.log(`I study ${this.#course} at ${this.university}`);
+  }
+
+  study(h) {
+    // Referencing private field and method
+    this.#makeCoffe();
+    this.#studyHours += h;
+  }
+
+  // Private method (⚠ Might not yet work in your browser. “Fake” alternative:_ instead of #)
+  #makeCoffe() {
+    console.log('Here is a coffe for you 😎 ');
+  }
+
+  // Getter method
+  get testScore() {
+    return this._testScore;
+  }
+
+  // Setter method (use _ to set property with same name as method, and also add getter)
+  set testScore(score) {
+    this._testScore = score <= 20 ? score : 0;
+  }
+
+  // Static method (available only on class. Can not access instance properties nor methods, only static ones)
+  static printCurriculum() {
+    console.log(`There are ${this.numSubjects} subjects`);
+  }
+}
+
+// Creating new object with new operator and Test using demo data
+const student = new Student('Najir Seikh', 1997, 2018, 'CSE');
+console.log(student);
+student.introduce();
+student.study(8);
+student.testScore = 8;
+console.log(student.testScore);
+Student.printCurriculum();
