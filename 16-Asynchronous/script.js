@@ -1,6 +1,10 @@
 /* **************Code by Najir Seikh - 3/06/2023************** */
 'use strict';
 /* **************Our First AJAX Call: XMLHttpRequest - 03/06/2023************** */
+
+const btn = document.querySelector('.btn-country');
+const countriesContainer = document.querySelector('.countries');
+
 /*
 const getCountryData = function (country) {
   const request = new XMLHttpRequest();
@@ -35,9 +39,6 @@ getCountryData('usa');
 getCountryData('germany');
 */
 
-// const btn = document.querySelector('.btn-country');
-// const countriesContainer = document.querySelector('.countries');
-
 // const request = new XMLHttpRequest();
 // request.open('GET', 'https://restcountries.com/v3.1/name/india');
 // // request.open('GET', 'https://restcountries.com/v3.1/name/usa');
@@ -70,8 +71,6 @@ getCountryData('germany');
 //   countriesContainer.style.opacity = 1;
 // });
 /*
-const btn = document.querySelector('.btn-country');
-const countriesContainer = document.querySelector('.countries');
 
 const getCountryData = function (country) {
   const request = new XMLHttpRequest();
@@ -110,9 +109,6 @@ getCountryData('portugal');
 // getCountryData('india');
 */
 /* **************Welcome to Callback Hell - 04/06/2023************** */
-/*
-const btn = document.querySelector('.btn-country');
-const countriesContainer = document.querySelector('.countries');
 
 const renderCountry = function (data, className = '') {
   const html = `
@@ -137,6 +133,7 @@ const renderCountry = function (data, className = '') {
   countriesContainer.style.opacity = 1;
 };
 
+/*
 const getCountryAndNeighbour = function (country) {
   // AJAX Call Country 1
   const request = new XMLHttpRequest();
@@ -189,10 +186,33 @@ setTimeout(() => {
 
 */
 /* **************Promises and the Fetch API - 04/06/2023************** */
-
+/*
 // const request = new XMLHttpRequest();
 // request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
 // request.send();
 
 const request = fetch(`https://restcountries.com/v3.1/name/india`);
 console.log(request);
+*/
+/* **************Consuming Promises - 04/06/2023************** */
+
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.com/v3.1/name/${country}`)
+//     .then(function (Response) {
+//       console.log(Response);
+//       return Response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+
+//       renderCountry(data[0]);
+//     });
+// };
+
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then(Response => Response.json())
+    .then(data => renderCountry(data[0]));
+};
+
+getCountryData('india');
