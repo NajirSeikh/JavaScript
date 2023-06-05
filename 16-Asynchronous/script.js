@@ -373,7 +373,7 @@ whereAmI(19.037, 72.873);
 */
 
 /* **************The Event Loop in Practice - 05/06/2023************** */
-
+/*
 console.log('Test start');
 setTimeout(() => console.log('0 sec timer'));
 Promise.resolve('Resolved promise 1').then(res => console.log(res));
@@ -384,3 +384,46 @@ Promise.resolve('Resolved promise 2').then(res => {
 });
 
 console.log('Test end');
+*/
+/* **************Building a Simple Promise - 06/06/2023************** */
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log('Lottery draw is happening 🔮');
+  setTimeout(function () {
+    if (Math.random() >= 0.5) {
+      resolve('You WIN 💰');
+    } else {
+      reject(new Error('You lost your money 💩'));
+    }
+  }, 100);
+});
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+
+// Promisifying setTimeout
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(1)
+  .then(() => {
+    console.log('1 second passed');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('2 second passed');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('3 second passed');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('4 second passed');
+    return wait(1);
+  });
+
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject(new Error('Problem!')).catch(x => console.error(x));
