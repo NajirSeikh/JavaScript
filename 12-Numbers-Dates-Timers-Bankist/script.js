@@ -291,7 +291,7 @@ console.log(Number.isInteger(23.0)); //true
 console.log(Number.isInteger(23 / 0)); //false
 */
 /* **************Math and Rounding - 20/06/2023************** */
-
+/*
 console.log(Math.sqrt(25)); //5
 console.log(25 ** (1 / 2)); //5
 console.log(8 ** (1 / 3)); //2
@@ -332,3 +332,33 @@ console.log((2.7).toFixed(0)); //3  - 'toFixed()' returns string value
 console.log((2.7).toFixed(3)); //2.700
 console.log((2.345).toFixed(2)); //2.35
 console.log(+(2.345).toFixed(2)); //2.35 (its a number bcoz of '+')
+*/
+/* **************The Reminder Operator - 20/06/2023************** */
+
+console.log(5 % 2); //1
+console.log(5 / 2); // 2.5, 5 = 2 * 2 +1
+
+console.log(8 % 3); //2
+console.log(8 / 3); //2.66666666666665, 8 = 2 * 3 + 2
+
+console.log(6 % 2); //0
+console.log(6 / 2); //3
+
+console.log(7 % 2); //1
+console.log(7 / 2); //3.5
+
+// const isEven = n => n % 2 === 0;
+const isEven = n => (n % 2 === 0 ? `${n} is Even` : `${n} is Odd`);
+console.log(isEven(8)); //8 is Even
+console.log(isEven(23)); //23 is Odd
+console.log(isEven(514)); //514 is Even
+
+// When click on Current balance
+labelBalance.addEventListener('click', function () {
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+    // 0, 2, 4, 6
+    if (i % 2 === 0) row.style.backgroundColor = 'orange';
+    // 0, 3, 6, 9
+    if (i % 3 === 0) row.style.backgroundColor = 'blue';
+  });
+});
