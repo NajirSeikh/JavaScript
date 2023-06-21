@@ -365,7 +365,7 @@ labelBalance.addEventListener('click', function () {
 
 */
 /* **************Numeric Separators - 21/06/2023************** */
-
+/*
 // 287,460,000,000
 const diameter = 287_460_000_000;
 console.log(diameter); //287460000000
@@ -388,3 +388,39 @@ console.log(PI); //3.1415
 
 console.log(Number('230_00')); //NaN
 console.log(parseInt('230_00')); //230
+*/
+/* **************Working with BigInt - 21/06/2023************** */
+
+console.log(2 ** 53 - 1); //9007199254740991
+console.log(Number.MAX_SAFE_INTEGER); //9007199254740991
+console.log(2 ** 53 + 1); //9007199254740992
+console.log(2 ** 53 + 2); //9007199254740994
+console.log(2 ** 53 + 3); //9007199254740996
+console.log(2 ** 53 + 4); //9007199254740996
+console.log(2 ** 53 + 0); //9007199254740992
+
+console.log(484584896446468513216973135n); //484584896446468513216973135n
+console.log(BigInt(4854976158)); //4854976158n
+
+// Operations
+console.log(10000n + 10000n); //20000n
+console.log(13541442313651640564n * 1000n); //13541442313651640564000n
+// console.log(Math.sqrt(16n)); //TypeError
+
+const huge = 1245157813650151256221n;
+const num = 23;
+// console.log(huge * num); //TypeError
+console.log(huge * BigInt(num)); //28638629713953478893083n
+
+// Exceptions
+console.log(20n > 15); //true
+console.log(20n === 20); // false
+console.log(typeof 20n); //bigint
+console.log(20n == 20); //true
+console.log(20n == '20'); //true
+
+console.log(huge + ' is REALLY big!!!'); //1245157813650151256221 is REALLY big!!!
+
+// Divisions
+console.log(11n / 3n); //3n
+console.log(10 / 3); //3.3333333333333335
