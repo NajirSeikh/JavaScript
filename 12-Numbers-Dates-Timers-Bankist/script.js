@@ -390,7 +390,7 @@ console.log(Number('230_00')); //NaN
 console.log(parseInt('230_00')); //230
 */
 /* **************Working with BigInt - 21/06/2023************** */
-
+/*
 console.log(2 ** 53 - 1); //9007199254740991
 console.log(Number.MAX_SAFE_INTEGER); //9007199254740991
 console.log(2 ** 53 + 1); //9007199254740992
@@ -424,3 +424,40 @@ console.log(huge + ' is REALLY big!!!'); //1245157813650151256221 is REALLY big!
 // Divisions
 console.log(11n / 3n); //3n
 console.log(10 / 3); //3.3333333333333335
+
+*/
+/* **************Creating Dates - 21/06/2023************** */
+
+const now = new Date(); //Wed Jun 21 2023 08:22:31 GMT+0530 (India Standard Time)
+console.log(now); //Wed Jun 21 2023 08:19:12 GMT+0530 (India Standard Time)
+
+console.log(new Date('Aug 02 2020 18:05:41')); //Sun Aug 02 2020 18:05:41 GMT+0530 (India Standard Time)
+console.log(new Date('December 24, 2015')); //Thu Dec 24 2015 00:00:00 GMT+0530 (India Standard Time)
+
+console.log(new Date(account1.movementsDates[0])); //Tue Nov 19 2019 03:01:17 GMT+0530 (India Standard Time)
+
+console.log(new Date(2037, 10, 19, 15, 23, 5)); //Thu Nov 19 2037 15:23:05 GMT+0530 (India Standard Time)
+console.log(new Date(2037, 10, 31)); //Tue Dec 01 2037 00:00:00 GMT+0530 (India Standard Time)
+
+console.log(new Date(0)); //Thu Jan 01 1970 05:30:00 GMT+0530 (India Standard Time)
+console.log(new Date(3 * 24 * 60 * 60 * 1000)); //Sun Jan 04 1970 05:30:00 GMT+0530 (India Standard Time)
+
+// Working with dates
+const future = new Date(2037, 10, 19, 15, 23); //Thu Nov 19 2037 15:23:00 GMT+0530 (India Standard Time)
+console.log(future);
+console.log(future.getFullYear()); //2037
+console.log(future.getMonth()); // 10
+console.log(future.getDate()); //19
+console.log(future.getDay()); //4
+console.log(future.getHours()); //15
+console.log(future.getMinutes()); //23
+console.log(future.getSeconds()); //0
+console.log(future.toISOString()); //2037-11-19T09:53:00.000Z
+console.log(future.getTime()); //2142237180000
+
+console.log(new Date(2142237180000)); //Thu Nov 19 2037 15:23:00 GMT+0530 (India Standard Time)
+
+console.log(Date.now()); //1687315930568
+
+future.setFullYear(2040);
+console.log(future); //Mon Nov 19 2040 15:23:00 GMT+0530 (India Standard Time)
