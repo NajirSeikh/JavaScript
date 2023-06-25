@@ -26,8 +26,8 @@ const account1 = {
     '2023-06-17T23:36:17.929Z',
     '2023-06-22T10:51:36.790Z',
   ],
-  currency: 'EUR',
-  locale: 'en-IN', // de-DE
+  currency: 'INR',
+  locale: 'en-IN', // en-IN
   // locale: 'pt-PT', // de-DE
 };
 
@@ -100,6 +100,14 @@ const formatMovementDate = function (date, locale) {
   // return `${day}/${month}/${year}`;
   return new Intl.DateTimeFormat(locale).format(date);
 };
+/* **************Internationalizing Numbers(Intl) - 25/06/2023************** */
+const formatCur = function (value, locale, currency) {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    // currency: 'USD',
+    currency: currency,
+  }).format(value);
+};
 
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
@@ -114,13 +122,20 @@ const displayMovements = function (acc, sort = false) {
     const date = new Date(acc.movementsDates[i]);
     const displayDate = formatMovementDate(date, acc.locale);
 
+    const formattedMov = formatCur(mov, acc.locale, acc.currency);
+    // const formattedMov = new Intl.NumberFormat(acc.locale, {
+    //   style: 'currency',
+    //   // currency: 'USD',
+    //   currency: acc.currency,
+    // }).format(mov);
+
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
     <div class="movements__date">${displayDate}</div>
-        <div class="movements__value">${mov.toFixed(2)}€</div>
+        <div class="movements__value">${formattedMov}</div>
       </div>
     `;
 
@@ -130,19 +145,22 @@ const displayMovements = function (acc, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
+  // labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
+  labelBalance.textContent = formatCur(acc.balance, acc.locale, acc.currency);
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+  // labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+  labelSumIn.textContent = formatCur(incomes, acc.locale, acc.currency);
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
+  // labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
+  labelSumOut.textContent = formatCur(Math.abs(out), acc.locale, acc.currency);
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -152,7 +170,8 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  // labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = formatCur(interest, acc.locale, acc.currency);
 };
 
 const createUsernames = function (accs) {
@@ -556,7 +575,7 @@ future.setFullYear(2040);
 console.log(future); //Mon Nov 19 2040 15:23:00 GMT+0530 (India Standard Time)
 */
 /* **************Operations With Dates - 22/06/2023************** */
-
+/*
 const future = new Date(2037, 10, 19, 15, 23);
 // console.log(future);
 console.log(+future);
@@ -566,3 +585,28 @@ const calcDaysPassed = (date1, date2) =>
 
 const days1 = calcDaysPassed(new Date(2037, 3, 4), new Date(2037, 3, 14));
 console.log(days1); //10
+*/
+/* **************Internationalizing Numbers(Intl) - 25/06/2023************** */
+
+const num = 3884764.23;
+
+const options = {
+  // style: 'unit',
+  // // unit: 'mile-per-hour',
+  // unit: 'celsius',
+
+  // style: 'percent',
+
+  style: 'currency',
+  currency: 'EUR',
+  // useGrouping: false,
+};
+
+console.log('USA: ', new Intl.NumberFormat('en-US', options).format(num));
+console.log('India: ', new Intl.NumberFormat('en-IN', options).format(num));
+console.log('Germany: ', new Intl.NumberFormat('de-DE', options).format(num));
+console.log('Syria: ', new Intl.NumberFormat('ar-SY', options).format(num));
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigator.language, options).format(num)
+);
