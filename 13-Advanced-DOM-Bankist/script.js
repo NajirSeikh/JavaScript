@@ -157,9 +157,20 @@ const handleHover = function (e) {
     logo.style.opacity = this;
   }
 };
-
+// Passing "arguments" into handler
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
+
+/* **************Implementing a Sticky Navigation: The Scroll Event - 26/07/2023************** */
+const initialCoords = section1.getBoundingClientRect();
+console.log(initialCoords);
+
+window.addEventListener('scroll', function (e) {
+  console.log(window.scrollY);
+
+  if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
 
 /* **************Selecting, Creating, and Deleting Elements - 01/07/2023************** */
 /*
